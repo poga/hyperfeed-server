@@ -5,7 +5,7 @@ var argv = require('minimist')(process.argv.slice(2))
 var opts = {webrtc: argv.webrtc}
 
 host(argv._[0], opts, (err, feed, sw) => {
-  if (err) return console.error(err)
+  if (err) throw (err)
   console.log(feed.key().toString('hex'))
   sw.on('connection', function (peer, type) {
     console.log('got', type) // type is 'webrtc-swarm' or 'discovery-swarm'
@@ -26,7 +26,7 @@ function host (rssURL, opts, cb) {
         var wrtc = require('electron-webrtc')()
         // listen for errors
         wrtc.on('error', function (err, source) {
-          console.error(err)
+          throw (err)
         })
         sw = feed.swarm({wrtc: wrtc})
       } else {

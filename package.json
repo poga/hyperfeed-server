@@ -1,18 +1,18 @@
 {
-  "name": "hyperfeed-host",
+  "name": "hyperfeed-server",
   "version": "1.0.0",
-  "description": "Host a Hyperfeed for given URL from cli",
+  "description": "Serve a RSS/ATOM feed as Hyperfeed",
   "main": "index.js",
   "bin": { "hyperfeed-host": "./index.js" },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["hyperfeed", "webrtc", "p2p"],
+  "keywords": ["hyperfeed", "webrtc", "p2p", "RSS", "ATOM"],
   "author": "Poga Po<poga.bahamut@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "electron-webrtc": "^0.2.12",
-    "hyperfeed": "^1.11.0",
+    "hyperfeed": "^1.14.0",
     "minimist": "^1.2.0"
   }
 }

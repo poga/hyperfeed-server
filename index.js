@@ -9,12 +9,15 @@ module.exports = {serve: serve, update: update}
 function serve (url, opts, cb) {
   var feed
   if (opts.key) {
+    console.log('reopening', opts.key)
     feed = new Hyperfeed(opts.key, {storage: opts.storage})
   } else {
     feed = new Hyperfeed({storage: opts.storage})
   }
 
-  update(url, feed, done)
+  feed.open(() => {
+    update(url, feed, done)
+  })
 
   function done (err) {
     if (err) return cb(err)
@@ -26,7 +29,7 @@ function serve (url, opts, cb) {
         console.log(`[${feed.key().toString('hex')}]`, 'peer disconnected')
       })
     })
-    cb(null, {feed: feed.toString('hex'), sw: sw})
+    cb(null, {url: url, feed: feed, sw: sw})
   }
 }
 

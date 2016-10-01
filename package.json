@@ -3,16 +3,26 @@
   "version": "1.0.0",
   "description": "Serve a RSS/ATOM feed as a Hyperfeed",
   "main": "index.js",
-  "bin": { "hyperfeed-server": "./bin/serve.js" },
+  "bin": {
+    "hyperfeed-server": "./bin/serve.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["hyperfeed", "webrtc", "p2p", "RSS", "ATOM"],
+  "keywords": [
+    "hyperfeed",
+    "webrtc",
+    "p2p",
+    "RSS",
+    "ATOM"
+  ],
   "author": "Poga Po<poga.bahamut@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "async": "^2.0.1",
     "electron-webrtc": "^0.2.12",
-    "hyperfeed": "^1.14.0",
+    "hyperfeed": "^1.14.1",
+    "level": "^1.4.0",
     "minimist": "^1.2.0"
   }
 }

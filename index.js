@@ -4,27 +4,30 @@ const request = require('request')
 var argv = require('minimist')(process.argv.slice(2))
 var opts = {webrtc: argv.webrtc}
 
-module.exports = {serve: serve}
+module.exports = {serve: serve, update: update}
 
-function serve (config, opts, cb) {
-  var conns = {}
-  config.feeds.forEach(feedConfig => {
-    var feed = new Hyperfeed()
+function serve (url, opts, cb) {
+  var feed
+  if (opts.key) {
+    feed = new Hyperfeed(opts.key, {storage: opts.storage})
+  } else {
+    feed = new Hyperfeed({storage: opts.storage})
+  }
 
-    update(feedConfig.url, feed, (err) => {
-      if (err) return cb(err)
-      var sw = swarm(feed, opts.webrtc)
-      sw.on('connection', function (peer, type) {
-        console.log('got', type) // type is 'webrtc-swarm' or 'discovery-swarm'
-        console.log('connected to', sw.connections, 'peers')
-        peer.on('close', function () {
-          console.log('peer disconnected')
-        })
+  update(url, feed, done)
+
+  function done (err) {
+    if (err) return cb(err)
+    var sw = swarm(feed, opts.webrtc)
+    sw.on('connection', function (peer, type) {
+      console.log(`[${feed.key().toString('hex')}]`, 'got', type) // type is 'webrtc-swarm' or 'discovery-swarm'
+      console.log(`[${feed.key().toString('hex')}]`, 'connected to', sw.connections, 'peers')
+      peer.on('close', function () {
+        console.log(`[${feed.key().toString('hex')}]`, 'peer disconnected')
       })
-      conns[feedConfig.url] = {key: feed.key().toString('hex'), sw: sw}
-      cb(null, conns)
     })
-  })
+    cb(null, {feed: feed.toString('hex'), sw: sw})
+  }
 }
 
 function update (url, feed, cb) {

@@ -3,8 +3,19 @@ var opts = {webrtc: argv.webrtc}
 
 const server = require('..')
 
-server.serve({feeds: [{url: argv._[0]}]}, opts, (err, conns) => {
-  if (err) throw (err)
+var config = {
+  feeds: [
+    {
+      url: argv._[0],
+      refresh: 30 * 1000
+    }
+  ]
+}
 
-  console.log(conns)
+config.feeds.forEach(conf => {
+  server.serve(conf.url, opts, (err, conn) => {
+    if (err) throw (err)
+
+    console.log(conn.feed.key().toString('hex'))
+  })
 })

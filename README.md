@@ -4,11 +4,11 @@
 
 Hosting a [Hyperfeed](https://github.com/poga/hyperfeed) from command line.
 
-`npm i hyperfeed-host`
+`npm i hyperfeed-server`
 
 ## Usage
 
-`$ hyperfeed-host <RSS_URL> [--webrtc]`
+`$ hyperfeed-server <CONFIG_PATH> [--webrtc]`
 
 ## License
 

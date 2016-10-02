@@ -3,7 +3,7 @@ const async = require('async')
 const level = require('level')
 
 var argv = require('minimist')(process.argv.slice(2))
-var opts = {webrtc: argv.webrtc, storage: level('./feeds')}
+var opts = {webrtc: argv.webrtc}
 
 const server = require('..')
 
@@ -22,7 +22,7 @@ config.feeds.forEach(conf => {
 
 function serve (conf) {
   return (cb) => {
-    server.serve(conf.url, Object.assign({}, opts, {key: keystore[conf.url]}), cb)
+    server.serve(conf.url, Object.assign({}, opts, {key: keystore[conf.url], own: true}), cb)
   }
 }
 

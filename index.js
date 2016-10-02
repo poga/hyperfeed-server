@@ -1,27 +1,23 @@
 const Hyperfeed = require('hyperfeed')
 const request = require('request')
 
-var argv = require('minimist')(process.argv.slice(2))
-var opts = {webrtc: argv.webrtc}
-
 module.exports = {serve: serve, update: update}
 
 function serve (url, opts, cb) {
   var feed
   if (opts.key) {
     console.log('reopening', opts.key)
-    feed = new Hyperfeed(opts.key, {storage: opts.storage})
+    feed = new Hyperfeed(opts.key, {storage: opts.storage, own: opts.own})
   } else {
     feed = new Hyperfeed({storage: opts.storage})
   }
 
-  feed.open(() => {
-    update(url, feed, done)
-  })
+  update(url, feed, done)
 
   function done (err) {
     if (err) return cb(err)
     var sw = swarm(feed, opts.webrtc)
+    console.log('serving', feed.key().toString('hex'))
     sw.on('connection', function (peer, type) {
       console.log(`[${feed.key().toString('hex')}]`, 'got', type) // type is 'webrtc-swarm' or 'discovery-swarm'
       console.log(`[${feed.key().toString('hex')}]`, 'connected to', sw.connections, 'peers')

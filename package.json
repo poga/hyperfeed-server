@@ -21,7 +21,7 @@
   "dependencies": {
     "async": "^2.0.1",
     "electron-webrtc": "^0.2.12",
-    "hyperfeed": "^1.14.1",
+    "hyperfeed": "^1.15.1",
     "level": "^1.4.0",
     "minimist": "^1.2.0"
   }

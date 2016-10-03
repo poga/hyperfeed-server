@@ -1,7 +1,7 @@
 const Hyperfeed = require('hyperfeed')
 const request = require('request')
 
-module.exports = {serve: serve, update: update}
+module.exports = {serve: serve, update: update, swarm: swarm}
 
 function serve (url, opts, cb) {
   var feed

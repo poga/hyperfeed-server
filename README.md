@@ -8,7 +8,7 @@ Hosting a [Hyperfeed](https://github.com/poga/hyperfeed) from command line.
 
 ## Usage
 
-`$ hyperfeed-server <CONFIG_PATH> [--webrtc]`
+`$ hyperfeed-server <CONFIG_PATH> [--webrtc] [--merge]`
 
 ## License
 

@@ -1,0 +1,16 @@
+{
+  "feeds": [
+    {
+      "url": "https://alerts.ncdr.nat.gov.tw/RssAtomFeed.ashx",
+      "refresh": 60000
+    },
+    {
+      "url": "http://www.cwb.gov.tw/rss/Data/cwb_warning.xml",
+      "refresh": 60000
+    },
+    {
+      "url": "http://mspadapter2.emic.gov.tw/capRss/cap.rss",
+      "refresh": 60000
+    }
+  ]
+}

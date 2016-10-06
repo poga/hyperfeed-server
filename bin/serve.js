@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 const fs = require('fs')
 const async = require('async')
 const level = require('level')

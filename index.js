@@ -6,7 +6,7 @@ function serve (feed, url, opts, cb) {
   request(url, (err, resp, body) => {
     if (err) return done(err)
 
-    feed.update(body).then(done(null))
+    feed.update(body).then(() => { done() })
   })
 
   function done (err) {

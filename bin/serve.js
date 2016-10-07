@@ -7,7 +7,6 @@ const hyperdrive = require('hyperdrive')
 const server = require('..')
 
 var argv = require('minimist')(process.argv.slice(2))
-var hf = hyperfeed(hyperdrive(level('feed')))
 
 var config = JSON.parse(fs.readFileSync(argv._[0]))
 var keystore = {}
@@ -16,6 +15,7 @@ try {
 } catch (e) {
   // ignore if keystore file is not found
 }
+var hf = hyperfeed(hyperdrive(level(`${argv._[0]}.db`)))
 
 var servers = []
 config.feeds.forEach(conf => {

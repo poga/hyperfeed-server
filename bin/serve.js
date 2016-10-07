@@ -45,7 +45,7 @@ async.series(servers, (err, connections) => {
 
 function serve (conf) {
   return (cb) => {
-    var feed = hf.createFeed(keystore[conf.url], {own: true})
+    var feed = hf.createFeed(keystore[conf.url], {own: true, scrap: conf.scrap})
     server.serve(feed, conf.url, {useWebRTC: argv.webrtc, live: argv.live, interval: 300 * 1000}, cb)
   }
 }

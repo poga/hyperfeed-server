@@ -21,8 +21,8 @@
   "dependencies": {
     "async": "^2.0.1",
     "electron-webrtc": "^0.2.12",
-    "hyperfeed": "^2.1.1",
-    "hyperfeed-merge": "^2.2.0",
+    "hyperfeed": "^2.3.2",
+    "hyperfeed-merge": "^2.2.1",
     "level": "^1.4.0",
     "minimist": "^1.2.0"
   }

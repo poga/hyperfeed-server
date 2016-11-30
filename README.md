@@ -12,7 +12,7 @@ Hosting a [Hyperfeed](https://github.com/poga/hyperfeed) from command line.
 
 options:
 
-* webrtc: enable webrtc connection (use [electron-webrtc](https://github.com/mappum/electron-webrtc))
+* webrtc: enable webrtc connection (use [electron-webrtc](https://github.com/mappum/electron-webrtc)) *experimental, not always work*
 * merge: create a new feed which contains all items from source feeds
 * live: automatically re-fetch source url
 

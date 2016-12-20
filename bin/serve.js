@@ -34,7 +34,7 @@ async.series(servers, (err, connections) => {
     var out = hf.createFeed(keystore['merge'], {own: true})
     var ins = connections.map(c => c.feed)
     require('hyperfeed-merge')(ins, out)
-    debug(out, server.swarm(out, argv.webrtc))
+    debug(out, server.swarm(out))
 
     keystore['merge'] = out.key().toString('hex')
     console.log('merged feed key:', out.key().toString('hex'))
@@ -46,7 +46,7 @@ async.series(servers, (err, connections) => {
 function serve (conf) {
   return (cb) => {
     var feed = hf.createFeed(keystore[conf.url], {own: true, scrap: conf.scrap})
-    server.serve(feed, conf.url, {useWebRTC: argv.webrtc, live: argv.live, interval: 300 * 1000}, cb)
+    server.serve(feed, conf.url, {live: argv.live, interval: 300 * 1000}, cb)
   }
 }
 

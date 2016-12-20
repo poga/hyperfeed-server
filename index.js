@@ -1,4 +1,5 @@
 const request = require('request')
+const hyperdiscovery = require('hyperdiscovery')
 
 module.exports = {serve: serve, swarm: swarm}
 
@@ -26,17 +27,6 @@ function serve (feed, url, opts, cb) {
   }
 }
 
-function swarm (feed, useWebRTC) {
-  var sw
-  if (useWebRTC) {
-    var wrtc = require('electron-webrtc')()
-    // listen for errors
-    wrtc.on('error', function (err, source) {
-      throw (err)
-    })
-    sw = feed.swarm({wrtc: wrtc})
-  } else {
-    sw = feed.swarm()
-  }
-  return sw
+function swarm (feed) {
+  return hyperdiscovery(feed)
 }

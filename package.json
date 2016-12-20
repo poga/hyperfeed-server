@@ -11,7 +11,6 @@
   },
   "keywords": [
     "hyperfeed",
-    "webrtc",
     "p2p",
     "RSS",
     "ATOM"
@@ -20,8 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "async": "^2.0.1",
-    "electron-webrtc": "^0.2.12",
-    "hyperfeed": "^2.3.3",
+    "hyperdiscovery": "^1.1.0",
+    "hyperfeed": "^2.4.0",
     "hyperfeed-merge": "^2.2.2",
     "level": "^1.4.0",
     "minimist": "^1.2.0"

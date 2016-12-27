@@ -4,7 +4,7 @@
   "description": "Serve a RSS/ATOM feed as a Hyperfeed",
   "main": "index.js",
   "bin": {
-    "hyperfeed-server": "./bin/serve.js"
+    "hyperfeed-server": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,9 +19,10 @@
   "license": "MIT",
   "dependencies": {
     "async": "^2.0.1",
+    "feed-hyperify": "^1.0.0",
     "hyperdiscovery": "^1.1.0",
     "hyperfeed": "^2.4.0",
-    "hyperfeed-merge": "^2.2.2",
+    "hyperfeed-merge": "^2.3.0",
     "level": "^1.4.0",
     "minimist": "^1.2.0"
   }

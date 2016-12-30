@@ -56,7 +56,7 @@ function serve (conf) {
 function debug (feed, sw) {
   sw.on('connection', function (peer, type) {
     console.log(`[${feed.key.toString('hex')}]`, 'got', type) // type is 'webrtc-swarm' or 'discovery-swarm'
-    console.log(`[${feed.key.toString('hex')}]`, 'connected to', sw.connections, 'peers')
+    console.log(`[${feed.key.toString('hex')}]`, 'connected to', sw.connections.length, 'peers')
     peer.on('close', function () {
       console.log(`[${feed.key.toString('hex')}]`, 'peer disconnected')
     })

@@ -23,6 +23,7 @@
     "hyperdiscovery": "^1.1.0",
     "hyperfeed": "^2.4.0",
     "hyperfeed-merge": "^2.3.0",
+    "hyperfeed-ws": "^1.0.0",
     "level": "^1.4.0",
     "minimist": "^1.2.0"
   }

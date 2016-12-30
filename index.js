@@ -6,6 +6,7 @@ const hyperfeed = require('hyperfeed')
 const hyperdrive = require('hyperdrive')
 const Hyperify = require('feed-hyperify')
 const hyperdiscovery = require('hyperdiscovery')
+const WSS = require('hyperfeed-ws')
 
 const argv = require('minimist')(process.argv.slice(2))
 const configPath = argv._[0]
@@ -33,6 +34,8 @@ async.series(servers, (err, connections) => {
 
     keystore['merge'] = out.key.toString('hex')
     console.log('merged feed key:', out.key.toString('hex'))
+    var wss = new WSS(out, {port: 9090, filter: x => x.ctime >= Date.now() - 1000 * 60 * 60 * 24 * 7}) // no older than 7 days
+    wss._server.on('connection', () => { console.log('connected') })
   }
 
   fs.writeFileSync(manifestPath, JSON.stringify(keystore, undefined, 2))

@@ -8,12 +8,11 @@ Hosting a [Hyperfeed](https://github.com/poga/hyperfeed) from command line.
 
 ## Usage
 
-`$ hyperfeed-server <CONFIG_PATH> [--merge] [--live]`
+`$ hyperfeed-server <CONFIG_PATH> [--merge]
 
-options:
+option:
 
 * merge: create a new feed which contains all items from source feeds
-* live: automatically re-fetch source url
 
 ## License
 

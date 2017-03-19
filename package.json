@@ -1,6 +1,6 @@
 {
   "name": "hyperfeed-server",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "Serve a RSS/ATOM feed as a Hyperfeed",
   "main": "index.js",
   "bin": {
